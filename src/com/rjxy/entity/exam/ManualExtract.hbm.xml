@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.exam">
+	<class name="ManualExtract" table="T_E_SDZJ">
+        <id name="manual_id" type="java.lang.Integer">
+            <column name="BH" length="3" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="questionType" class="QuestionType" fetch="select" lazy="false">
+            <column name="LXBH" length="2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="examPaper" class="ExamPaper" fetch="select" lazy="false">
+            <column name="SJBH" length="16" not-null="true" />
+        </many-to-one>
+        <property name="question_id" type="java.lang.String">
+            <column name="STTH" length="400" not-null="true" />
+        </property>
+        <property name="question_num" type="java.lang.Integer">
+            <column name="STGS" length="3" not-null="true" />
+        </property>
+        <property name="question_score" type="java.lang.Float">
+            <column name="STZF" precision="3" scale="1" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

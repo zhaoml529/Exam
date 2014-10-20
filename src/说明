@@ -1,0 +1,16 @@
+list.action		列表
+show.action		详细信息
+delete.action	删除
+update.action	修改
+add.action		转到添加页面
+save.action		保存页面数据
+create.action	创建
+search.action	搜索
+change.action   改变
+revoke 添加权限
+
+方法中get XXX ById 这样命名就是找XXX里面以主键为ID查找,如果以别的条件查找，在加如：get XXX BySubjectId
+
+统计通过人数，统计试卷中的每种试题个数
+写到提交成绩后判断是否通过，改写成绩页面上面的是否通过
+题库试题类型统计，具体还可以分，难度统计用pie-drilldown页面

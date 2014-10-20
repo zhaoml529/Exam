@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.exam">
+    <class name="Course" table="T_E_KCXX">
+        <id name="course_id" type="java.lang.Integer">
+            <column name="KCBH" length="2" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="gradeInformation" class="com.rjxy.entity.GradeInformation" fetch="select" lazy="false">
+            <column name="NJBH" length="4" not-null="true" />
+        </many-to-one>
+        <many-to-one name="subject" class="Subject" fetch="select" lazy="false">
+            <column name="KMBH" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="professionInformation" class="com.rjxy.entity.ProfessionInformation" fetch="select" lazy="false">
+            <column name="XKZYBH" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="classInformation" class="com.rjxy.entity.ClassInformation" fetch="select" lazy="false">
+            <column name="BH" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="teacherInformation" class="com.rjxy.entity.TeacherInformation" fetch="select" lazy="false">
+            <column name="JSBH" length="20" not-null="true" />
+        </many-to-one>
+        <many-to-one name="departmentInformation" class="com.rjxy.entity.DepartmentInformation" fetch="select" lazy="false">
+            <column name="JGBH" length="3" not-null="true" />
+        </many-to-one>
+        <property name="course_remark" type="java.lang.String">
+            <column name="KCSM" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

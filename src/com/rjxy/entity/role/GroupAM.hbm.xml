@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.role">
+	<class name="GroupAM" table="T_R_DZMK">
+        <id name="AM_id" type="java.lang.Integer">
+            <column name="MKDZBH" length="3" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="module" class="Module" fetch="select">
+            <column name="MKBH" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="action" class="Action" fetch="select">
+            <column name="DZBH" length="3" not-null="true" />
+        </many-to-one>
+        <set name="RAM_id" inverse="true" cascade="delete">
+            <key>
+                <column name="MKDZBH" length="3" not-null="true" />
+            </key>
+            <one-to-many class="GroupRAM" />
+        </set>
+    </class>
+</hibernate-mapping>

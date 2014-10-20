@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity">
+    <class name="GradeInformation" table="T_B_NJ">
+        <id name="grade_id" type="java.lang.Integer">
+            <column name="NJBH" />
+            <generator class="native" />
+        </id>
+        <property name="grade_name" type="java.lang.String">
+            <column name="NJMC" length="20" not-null="true" />
+        </property>
+        <property name="grade_remark" type="java.lang.String">
+            <column name="NJSM" length="50" />
+        </property>
+        <set name="stu_id" inverse="true" lazy="false">
+            <key>
+                <column name="NJBH" not-null="true" />
+            </key>
+            <one-to-many class="StudentInformation" />
+        </set>
+        <set name="course_id" inverse="true" lazy="false">
+            <key>
+                <column name="NJBH" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.exam.Course" />
+        </set>
+        <set name="exam_id" inverse="true" lazy="false">
+            <key>
+                <column name="NJBH" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.exam.ExamPaper" />
+        </set>
+        <set name="choice_id" inverse="true" lazy="false">
+            <key>
+                <column name="NJBH" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.question.Choice" />
+        </set>
+        <set name="cloze_id" inverse="true" lazy="false">
+            <key>
+                <column name="NJBH" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.question.Cloze" />
+        </set>
+        <set name="short_id" inverse="true" lazy="false">
+            <key>
+                <column name="NJBH" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.question.ShortAnswer" />
+        </set>
+        <set name="compre_id" inverse="true" lazy="false">
+            <key>
+                <column name="NJBH" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.question.Comprehensive" />
+        </set>
+        <set name="class_id" inverse="true" lazy="false">
+            <key>
+                <column name="NJBH" not-null="true" />
+            </key>
+            <one-to-many class="ClassInformation" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.exam">
+    <class name="ExamNature" table="T_B_KSXZ">
+        <id name="nature_id" type="java.lang.Integer">
+            <column name="XZBH" length="3" />
+           	<generator class="native" />
+        </id>
+        <property name="nature_name" type="java.lang.String">
+            <column name="XZMC" length="25" not-null="true" />
+        </property>
+        <property name="nature_remark" type="java.lang.String">
+            <column name="XZSM" length="100" not-null="true" />
+        </property>
+        <set name="examTask_id" inverse="true" lazy="false">
+            <key>
+                <column name="XZBH" length="3" not-null="true" />
+            </key>
+            <one-to-many class="ExamTask" />
+        </set>
+    </class>
+</hibernate-mapping>

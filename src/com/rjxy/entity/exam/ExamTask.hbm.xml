@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.exam">
+    <class name="ExamTask" table="T_E_KSRW">
+        <id name="examTask_id" type="java.lang.String">
+            <column name="RWBH" length="16" />
+        </id>
+        <many-to-one name="subject" class="Subject" fetch="select" lazy="false">
+            <column name="KMBH" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="examPaper" class="ExamPaper" fetch="select" lazy="false">
+            <column name="SJBH" length="16" not-null="true" />
+        </many-to-one>
+        <many-to-one name="teacherInformation" class="com.rjxy.entity.TeacherInformation" fetch="select" lazy="false">
+            <column name="JSBH" length="20" not-null="true" />
+        </many-to-one>
+        <many-to-one name="examNature" class="ExamNature" fetch="select" lazy="false">
+            <column name="XZBH" length="3" not-null="true" />
+        </many-to-one>
+        <set name="score_id" inverse="true" lazy="false">
+            <key>
+                <column name="RWBH" length="2" not-null="true" />
+            </key>
+            <one-to-many class="Score" />
+        </set>
+        <property name="class_id" type="java.lang.String">
+            <column name="BH" length="50" not-null="true" />
+        </property>
+        <property name="examTask_start" type="java.lang.String">
+            <column name="KSSJ" length="20" not-null="true" />
+        </property>
+        <property name="examTask_end" type="java.lang.String">
+            <column name="JSSJ" length="20" not-null="true" />
+        </property>
+        <property name="examTask_address" type="java.lang.String">
+            <column name="KSDD" length="50" not-null="true" />
+        </property>
+        <property name="examTask_teacher" type="java.lang.String">
+            <column name="JKLS" length="50" />
+        </property>
+        <property name="examTask_remark" type="java.lang.String">
+            <column name="KSSM" length="100" />
+        </property>
+        <property name="examTask_status" type="java.lang.String">
+            <column name="KSZT" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.question">
+    <class name="ShortAnswer" table="T_T_JDT">
+        <id name="question_id" type="java.lang.Integer">
+            <column name="TH" length="4" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="subject" class="com.rjxy.entity.exam.Subject" fetch="select" lazy="false">
+            <column name="KMBH" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="grade" class="com.rjxy.entity.GradeInformation" fetch="select" lazy="false">
+            <column name="NJBH" length="4" not-null="true" />
+        </many-to-one>
+        <property name="question_title" type="java.lang.String">
+            <column name="BT" not-null="true" />
+        </property>
+        <property name="question_body" type="java.lang.String">
+            <column name="TM" not-null="true" />
+        </property>
+        <property name="question_answer" type="java.lang.String">
+            <column name="DA" length="100" not-null="true" />
+        </property>
+        <property name="difficulty" type="java.lang.Integer">
+            <column name="NDXS" length="2" not-null="true" />
+        </property>
+        <property name="question_score" type="java.lang.Float">
+            <column name="FZ" precision="2" scale="1" not-null="true" />
+        </property>
+        <property name="add_person" type="java.lang.String">
+            <column name="JSBH" length="20" not-null="true" />
+        </property>
+        <property name="add_time" type="java.lang.String">
+            <column name="TJSJ" length="50" not-null="true" />
+        </property>
+        <property name="question_remark" type="java.lang.String">
+            <column name="STSM" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:aop="http://www.springframework.org/schema/aop" 
+       xmlns:tx="http://www.springframework.org/schema/tx" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+                           http://www.springframework.org/schema/tx  
+                           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+                           http://www.springframework.org/schema/aop  
+                           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"> 
+    <!-- 引入配置文件 --> 
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+        <property name="locations"> 
+            <list> 
+                <value>classpath:/jdbc.properties</value> 
+            </list> 
+        </property> 
+    </bean>
+	<!-- 数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<!-- 指定连接数据库的驱动 -->
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<!-- 指定连接数据库的URL -->
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<!-- 指定连接数据库的用户名 -->
+		<property name="user" value="${jdbc.username}" />
+		<!-- 指定连接数据库的密码 -->
+		<property name="password" value="${jdbc.password}" />
+		<!-- 指定连接数据库连接池的最大连接数 -->
+		<property name="maxPoolSize" value="${proxool.maxConnCount}" />
+		<!-- 指定连接数据库连接池的最小连接数 -->
+		<property name="minPoolSize" value="${proxool.minConnCount}" />
+		<!-- 指定连接数据库连接池的初始化连接数 -->
+		<property name="initialPoolSize" value="40" />
+		<!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+		<property name="maxIdleTime" value="60" />
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+		<property name="acquireIncrement" value="5" />
+		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+		<property name="idleConnectionTestPeriod" value="60" />
+	</bean>  
+    <!--可以写为com/rjxy/entity/*.hbm.xml  --> 
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
+        <property name="dataSource" ref="dataSource" /> 
+        <property name="mappingResources"> 
+            <list> 
+            	<value>com/rjxy/entity/ClassInformation.hbm.xml</value>
+            	<value>com/rjxy/entity/DepartmentInformation.hbm.xml</value>  
+            	<value>com/rjxy/entity/EduBackGround.hbm.xml</value> 
+            	<value>com/rjxy/entity/GradeInformation.hbm.xml</value>
+            	<value>com/rjxy/entity/PeopleAge.hbm.xml</value>  
+            	<value>com/rjxy/entity/ProfessionInformation.hbm.xml</value>  
+            	<value>com/rjxy/entity/StudentInformation.hbm.xml</value>  
+            	<value>com/rjxy/entity/TeacherInformation.hbm.xml</value>  
+            	<value>com/rjxy/entity/exam/AutomaticExtract.hbm.xml</value> 
+           	 	<value>com/rjxy/entity/exam/Course.hbm.xml</value> 
+           	 	<value>com/rjxy/entity/exam/Score.hbm.xml</value>
+            	<value>com/rjxy/entity/exam/ExamNature.hbm.xml</value> 
+            	<value>com/rjxy/entity/exam/ExamPaper.hbm.xml</value>
+            	<value>com/rjxy/entity/exam/ExamTask.hbm.xml</value>
+            	<value>com/rjxy/entity/exam/ManualExtract.hbm.xml</value>
+            	<value>com/rjxy/entity/exam/QuestionType.hbm.xml</value>
+            	<value>com/rjxy/entity/exam/Subject.hbm.xml</value>
+            	<value>com/rjxy/entity/question/Choice.hbm.xml</value>
+            	<value>com/rjxy/entity/question/Cloze.hbm.xml</value>
+            	<value>com/rjxy/entity/question/ShortAnswer.hbm.xml</value>
+            	<value>com/rjxy/entity/question/Comprehensive.hbm.xml</value>
+            	<value>com/rjxy/entity/role/Role.hbm.xml</value> 
+            	<value>com/rjxy/entity/role/Action.hbm.xml</value>
+            	<value>com/rjxy/entity/role/Module.hbm.xml</value>
+            	<value>com/rjxy/entity/role/GroupAM.hbm.xml</value>
+            	<value>com/rjxy/entity/role/GroupRAM.hbm.xml</value>
+            	<value>com/rjxy/entity/role/TeaRole.hbm.xml</value>
+            </list> 
+        </property> 
+        <property name="hibernateProperties"> 
+         	<props>
+		         <!-- <prop key="hibernate.show_sql">true</prop> 
+		         <prop key="hibernate.format_sql">true</prop>-->
+		         <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+		       <!--	 <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+  			</props>
+        </property> 
+    </bean>  
+	
+  
+    <!-- 事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+    
+	<!-- 配置事务的传播特性 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager"> 
+        <tx:attributes> 
+	        <tx:method name="get*" read-only="true"/> 
+	        <tx:method name="find*" read-only="true"/> 
+	        <tx:method name="search*" read-only="true"/> 
+	        <tx:method name="query*" read-only="true"/>
+            <tx:method name="add*" propagation="REQUIRED"/> 
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="create*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/> 
+            <tx:method name="*" propagation="REQUIRED" read-only="true" />
+        </tx:attributes> 
+    </tx:advice>     
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" /> 
+    
+    <!-- 那些类的哪些方法参与事务 -->
+    <aop:config proxy-target-class="true"> 
+        <aop:pointcut id="serviceMethod" expression="execution(* com.rjxy.core.*.*(..))" /> 
+        <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"/> 
+    </aop:config> 
+    <!-- 给Dao注入sessionFactory -->    
+    <bean id="entityDao" class="com.rjxy.core.BaseDaoImpl">
+	  <property name="sessionFactory" ref="sessionFactory" /> 
+    </bean> 
+    <bean id="departmentservice" class="com.rjxy.admin.action.DepartmentAction"></bean>
+    <bean id="userManagerService" class="com.rjxy.admin.action.UserManagerAction"></bean>
+    <bean id="loginService" class="com.rjxy.action.LoginAction"></bean>
+    <bean id="rightService" class="com.rjxy.admin.action.RightAction"></bean>
+    <bean id="roleService" class="com.rjxy.interceptors.RightInterceptor"></bean>
+    <bean id="questionService" class="com.rjxy.action.QuestionAction"></bean>
+    <bean id="examService" class="com.rjxy.action.ExamAction"></bean>
+    <bean id="examineService" class="com.rjxy.action.ExamineAction"></bean>
+    <bean id="onlineExamService" class="com.rjxy.action.OnlineExamAction"></bean>
+    <bean id="courseService" class="com.rjxy.admin.action.CourseAction"></bean>
+    <bean id="pageDao" class="com.rjxy.biz.ExamService"></bean>
+    <bean id="userService" class="com.rjxy.action.UserAction"></bean>
+  	<bean id="judgeService" class="com.rjxy.action.JudgeAction"></bean>
+  	<bean id="judgeExamService" class="com.rjxy.action.JudgeAction"></bean>
+  	<bean id="judgeExamineService" class="com.rjxy.action.JudgeAction"></bean>
+  	<bean id="exam_ExamineService" class="com.rjxy.action.ExamAction"></bean>
+  	<bean id="choiceService" class="com.rjxy.action.ExcelAction"></bean>
+  	<bean id="clozeService" class="com.rjxy.action.ExcelAction"></bean>
+  	<bean id="shortService" class="com.rjxy.action.ExcelAction"></bean>
+  	<bean id="compreService" class="com.rjxy.action.ExcelAction"></bean>
+</beans>

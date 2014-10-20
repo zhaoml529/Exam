@@ -1,0 +1,106 @@
+body{font-family:Arial;font-size:12px;margin:0px auto;color:#444;}
+*html{background-image:url(about:blank);background-attachment:fixed;}/*这个是解决IE6闪动问题*/
+div,form,img,ul,ol,li,dl,dt,dd {margin:0;padding:0;border:0;}
+h1,h2,h3,h4,h5,h6 {margin:0; padding:0; font-size:12px; font-weight:normal;}
+table,td,tr,th{font-size:12px;}
+li{list-style-type:none;}
+table{ margin:0 auto;}
+img{vertical-align:top;}
+.Hidebox{display:none;}
+.Showbox{display:block;}
+.left{float:left;}
+.right{float:right;}
+
+/* 链接颜色 */
+a {color:#444;text-decoration:none;}
+a:hover {color:#c00;text-decoration:underline;}
+
+/* 颜色属性 [定义规则，小写c加颜色名称] */
+.cRed,a.cRed:link,a.cRed:visited{ color:#f00;}
+.cBlue,.cBlue:link,.cBlue:visited{color:#014CCC; text-decoration:none}.cBlue:hover{text-decoration:none;}
+.cBlue2,a.cBlue2:link,a.cBlue2:visited{color:#cc3366; text-decoration:none}a.cBlue2:hover{text-decoration:underline;color:#f60;}
+.cDRed,a.cDRed:link,a.cDRed:visited{ color:#c00;}
+.cyellow,a.cyellow:link,a.cyellow:visited{ color:#ff0;}
+.cblank,a.cblank:link,a.cblank:visited{ color:#059;}
+
+#top{width:100%;height:auto;margin:0px auto;}
+#top .tps{width:1000px;margin:0px auto;height:37px;text-align:center;color:#666;font-size:14px;}
+#top .tps .add-F{width:78px;height:26px;border:none;color:#fff;font-weight:bold;cursor:pointer;font-size:12px;margin-top:5px;}
+#top .tps a{font-size:12px;color:#059;text-decoration:underline;margin-left:10px;display:inline;}
+#top .tps a:hover{color:#f30;}
+#top  a.close{width:9px;height:9px;position:absolute;top:15px;right:20px;overflow:hidden;text-indent:-9999px;font-size:0px;cursor:pointer;}
+
+#menu{width:100%;height:auto;margin:0px auto;background-color:#0058b0;}
+#menu .headbox{ width:1000px;margin:0px auto;height:auto;background-color:#0058b0;}
+#menu .headbox .logo{width:auto;float:left;background-color:#0058b0;}
+#menu .headbox .lst{width:28px;height:13px;float:left;text-indent:-9999px;font-size:0px;overflow:hidden;margin-left:5px;display:inline;margin-top:15px;background-color:#0058b0;}
+
+#headNav2{width:auto;height:auto;float:left;margin-left:10px;display:inline;font-size:12px;}
+#headNav3{font-size:12px;flaot:right;}
+#headNav{color:#FFFFFF;float:left;width:auto;height:auto;text-align:left;}
+#headNav li.current{background:#115fa0;}
+#headNav li.top-cur{}
+#headNav li.current a,#headNav li.top-cur a{padding:0px 10px;}
+#headNav li.current a:link,#headNav li.current a:visited{color:#fff;}
+#headNav li.current a:hover,#headNav li.top-cur a:hover{background:#115fa0;}
+
+#headNav li{float:left;text-align:center;position:relative;z-index:10;display:inline-block;z-index:100;margin-left:1px;cursor:pointer;line-height:49px;}
+#headNav a{float:left;display:inline-block;color:#fff;text-decoration:none; font-weight:normal}
+#headNav span{display:block;}
+#headNav a:hover,#headNav .on a{FLOAT:left; }
+#headNav .on span{color:#059;float:left;padding:0px 19px 0px 14px;cursor:pointer;border:1px solid #115fa0;border-bottom:none;line-height:48px;}
+#headNav .out span{color:#fff;position:relative;left:0px;z-index:2;float:left;padding:0px 20px 0px 15px;cursor:pointer;}
+
+#headNav .on2 span{color:#fff;float:left;padding:0px 20px 0px 15px;cursor:pointer;}
+#headNav .out2 span{color:#fff;position:relative;left:0px;z-index:2;float:left;padding:0px 20px 0px 15px;cursor:pointer;}
+
+#headNav .navp{width:auto;float:left;position:absolute;display:none;left:0px;top:49px;z-index:-110;background:#bfdbef;padding:0px 2px 2px 0px;}
+#headNav .navp2{width:auto;float:left;position:absolute;display:none;right:0px;top:49px;z-index:-110;}
+#headNav UL.navlist{width:200px;float:left;display:inline;border:1px solid #0d558d;background:#fff;border-top:none;padding:10px;}
+#headNav UL.navlist LI{width:48%;display:inline;height:auto;font-size:12px;line-height:22px;text-align:left;float:left;}
+#headNav UL.navlist2{width:120px;}
+#headNav UL.navlist2 LI{width:100%;}
+#headNav UL.navlist LI a{color:#666;width:90%;padding-left:10px;}
+#headNav UL.navlist LI a:hover{color:#fff;background:#1f8dc0;}
+#headNav UL.navlist LI a.km{color:#666;width:83%;padding-left:20px;}
+#headNav UL.navlist LI a.km:hover{color:#fff;}
+#headNav UL.navlist3{width:83px;float:left;display:inline;background:#11578b;padding:5px 0px 10px;filter:alpha(opacity=90);-moz-opacity:90;opacity:90;opacity:0.9!important;}
+#headNav UL.navlist3 LI{width:100%;display:inline;height:auto;font-size:12px;line-height:22px;text-align:left;float:left;}
+#headNav UL.navlist3 LI a{color:#fff;width:82%;padding-left:13px;}
+#headNav UL.navlist3 LI a:hover{color:#fff;background:#0c5385;}
+#headNav .out{z-index:0}
+#headNav .on .navp,#headNav .on2 .navp{display:block;}
+#headNav .on .navp2,#headNav .on2 .navp2{display:block;}
+#headNav .out .navp,#headNav .out .navp2{display:none;}
+#headNav .navp .Feedback{width:109px;height:21px;text-align:-9999px;font-size:0px;top:-20px;}
+
+
+.wrap{width:100%;height:auto;}
+
+.h10{width:100%;height:10px;background:#fff;}
+.mainBody{width:990px;margin:0px auto;background:url(../manegement/image/left_box.png) repeat-y #fff 5px;height:auto;position:relative;padding:0px 5px 15px;}
+.leftside ul.nav{width:100%;float:left;height:auto;font-size:14px;}
+.leftside ul.nav li{width:100%;float:left;height:auto;}
+.leftside ul.nav ul.navigation{width:100%;float:left;font-size:12px;padding-bottom:2px;}
+.leftside ul.nav ul.navigation li a{width:186px;height:33px;float:left;color:#7e7e7e;cursor:pointer;padding-left:14px;}
+.leftside ul.nav ul.navigation li.left-line{background:none;}
+
+.leftside ul.nav span{float:left;padding:10px 0px 0px 30px;height:23px;}
+.leftside ul.nav .expanded,.leftside ul.nav .collapsed:hover{text-decoration:none;}
+.leftside ul.nav .heading{float:left;margin-left:15px;font-weight:bold;display:inline;}
+
+
+.rightside{width:750px;height:auto;float:right;}
+.rightside h1{width:100%;height:45px;line-height: 200%;;float:left;font-family:微软雅黑,黑体;color:#4d4d4d;font-size:20px;margin-top:10px;}
+
+.footer{width:990px;height:auto;text-align:center;color:#888;line-height:22px;border-top:1px solid #52abd8;margin:0px auto;padding:15px 0px;}
+
+.kc_2{width:97px;height:172px;position:fixed;_position:absolute;top:100px;_top:expression(documentElement.scrollTop+100);right:8px;}
+.kc_2 .kc_f{width:97px;height:172px;position:relative;float:left;}
+.kc_2 .kc_f img{z-index:9998;}
+.kc_2 .kc_f .close{width:16px;height:18px;position:absolute;cursor:pointer;right:2px;top:0px;;z-index:9999;}
+
+.fkkuang{width:49px;height:52px;margin:0px auto;margin-top:10px;}
+
+
+/

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.role">
+    <class name="GroupRAM" table="T_R_JSDZMK">
+        <id name="RAM_id" type="java.lang.Integer">
+            <column name="JSDZBH" length="3" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="groupAM" class="GroupAM" fetch="select" >
+            <column name="MKDZBH" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="role" class="Role" fetch="select">
+            <column name="JSBH" length="3" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

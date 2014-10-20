@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.role">
+<class name="TeaRole" table="T_R_JSJS">
+        <comment>教师角色</comment>
+        <id name="teaRole_id" type="java.lang.Integer">
+            <column name="JSJSBH" length="3" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="teacherInformation" class="com.rjxy.entity.TeacherInformation"  fetch="select">
+            <column name="T_J_JSBH" length="20" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="role" class="Role" fetch="select">
+            <column name="JSBH" length="3" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

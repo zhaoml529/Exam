@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity">
+    <class name="PeopleAge" table="T_B_NLDM">
+        <id name="age_id" type="java.lang.Integer">
+            <column name="NLBH" length="2" />
+            <generator class="native" />
+        </id>
+        <property name="age_range" type="java.lang.String">
+            <column name="NLFW" length="50" not-null="true" />
+        </property>
+        <property name="age_remark" type="java.lang.String">
+            <column name="NLSM" length="100" />
+        </property>
+        <set name="tea_id" inverse="true" lazy="false">
+            <key>
+                <column name="NLBH" length="2" not-null="true" />
+            </key>
+            <one-to-many class="TeacherInformation" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity">
+	<class name="TeacherInformation" table="T_RY_JSXX">
+        <id name="tea_id" type="java.lang.String">
+            <column name="JSBH" length="20" />
+        </id>
+        <many-to-one name="peopleAge" class="PeopleAge" fetch="select" lazy="false">
+            <column name="NLBH" length="2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="eduBackGround" class="EduBackGround" fetch="select" lazy="false">
+            <column name="XLBH" length="2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="departmentInformation" class="DepartmentInformation" fetch="join" lazy="false">
+            <column name="JGBH" length="3" not-null="true" />
+        </many-to-one>
+        <property name="tea_password" type="java.lang.String">
+            <column name="JSMM" length="32" not-null="true" />
+        </property>
+        <property name="tea_name" type="java.lang.String">
+            <column name="JSXM" length="36" not-null="true" />
+        </property>
+        <property name="tea_sex" type="java.lang.String">
+            <column name="JSXB" length="1" />
+        </property>
+        <property name="tea_tel" type="java.lang.String">
+            <column name="LXFS" length="100" />
+        </property>
+        <property name="tea_remark" type="java.lang.String">
+            <column name="JSSM" length="100" />
+        </property>
+        <set name="exam_id" inverse="true" lazy="false">
+            <key>
+                <column name="JSBH" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.exam.ExamPaper" />
+        </set>
+        <set name="examTask_id" inverse="true" lazy="false">
+            <key>
+                <column name="JSBH" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.exam.ExamTask" />
+        </set>
+        <set name="course_id" inverse="true" lazy="false">
+            <key>
+                <column name="JSBH" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.exam.Course" />
+        </set>
+         <set name="teaRole_id" inverse="true" lazy="false">
+            <key>
+                <column name="T_J_JSBH" length="20" />
+            </key>
+            <one-to-many class="com.rjxy.entity.role.TeaRole" />
+        </set>
+    </class>
+</hibernate-mapping>

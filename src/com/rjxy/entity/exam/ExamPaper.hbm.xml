@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.exam">
+    <class name="ExamPaper" table="T_E_SJXX">
+        <id name="exam_id" type="java.lang.String">
+            <column name="SJBH" length="16" />
+        </id>
+        <many-to-one name="gradeInformation" class="com.rjxy.entity.GradeInformation" fetch="select" lazy="false">
+            <column name="NJBH" not-null="true" />
+        </many-to-one>
+        <many-to-one name="subject" class="Subject" fetch="select" lazy="false">
+            <column name="KMBH" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="teacherInformation" class="com.rjxy.entity.TeacherInformation" fetch="select" lazy="false">
+            <column name="JSBH" length="20" not-null="true" />
+        </many-to-one>
+        <property name="exam_name" type="java.lang.String">
+            <column name="SJMC" length="50" not-null="true" />
+        </property>
+        <property name="passScore" type="java.lang.Float">
+            <column name="TGFS" precision="3" scale="1" not-null="true" />
+        </property>
+        <property name="exam_date" type="java.lang.String">
+            <column name="CJSJ" length="15" not-null="true" />
+        </property>
+        <property name="exam_way" type="java.lang.Integer">
+            <column name="ZJFS" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="exam_remark" type="java.lang.String">
+            <column name="SJSM" length="100" />
+        </property>
+        <set name="examTask_id" inverse="true" lazy="false">
+            <key>
+                <column name="SJBH" length="15" not-null="true" />
+            </key>
+            <one-to-many class="ExamTask" />
+        </set>
+        <set name="manual_id" inverse="true" lazy="false" cascade="delete">
+            <key>
+                <column name="SJBH" length="15" not-null="true" />
+            </key>
+            <one-to-many class="ManualExtract" />
+        </set>
+        <set name="auto_id" inverse="true" cascade="delete" lazy="false">
+            <key>
+                <column name="SJBH" length="15" not-null="true" />
+            </key>
+            <one-to-many class="AutomaticExtract" />
+        </set>
+    </class>
+</hibernate-mapping>

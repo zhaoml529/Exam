@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity">
+	<class name="StudentInformation" table="T_RY_XSXX">
+        <id name="stu_id" type="java.lang.String">
+            <column name="XSXH" length="15" />
+        </id>
+        <many-to-one name="classInformation" class="ClassInformation" fetch="select" lazy="false">
+            <column name="BH" not-null="true" />
+        </many-to-one>
+        <many-to-one name="professionInformation" class="ProfessionInformation" fetch="select" lazy="false">
+            <column name="XKZYBH" not-null="true" />
+        </many-to-one>
+        <many-to-one name="gradeInformation" class="GradeInformation" fetch="select" lazy="false">
+            <column name="NJBH" not-null="true" />
+        </many-to-one>
+        <many-to-one name="role" class="com.rjxy.entity.role.Role" fetch="select" lazy="false">
+            <column name="JSBH" not-null="true" />
+        </many-to-one>
+        <many-to-one name="departmentInformation" class="DepartmentInformation" fetch="select" lazy="false">
+            <column name="JGBH" not-null="true" />
+        </many-to-one>
+        <set name="score_id" inverse="true" lazy="false">
+            <key>
+                <column name="XSXH" length="2" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.exam.Score" />
+        </set>
+        <property name="stu_password" type="java.lang.String">
+            <column name="XSMM" length="32" not-null="true" />
+        </property>
+        <property name="stu_name" type="java.lang.String">
+            <column name="XSXM" length="36" not-null="true" />
+        </property>
+        <property name="stu_sex" type="java.lang.Integer">
+            <column name="XSXB" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="stu_birthday" type="java.lang.String">
+            <column name="CSRQ" length="15" />
+        </property>
+        <property name="stu_address" type="java.lang.String">
+            <column name="JG" length="80" />
+        </property>
+        <property name="stu_polity" type="java.lang.String">
+            <column name="ZZMM" length="10" />
+        </property>
+        <property name="stu_remark" type="java.lang.String">
+            <column name="XSSM" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

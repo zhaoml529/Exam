@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity">
+    <class name="ClassInformation" table="T_B_BJ">
+        <id name="class_id" type="java.lang.Integer">
+            <column name="BH" length="3" />
+            <generator class="native" />
+        </id>
+        <property name="class_name" type="java.lang.String">
+            <column name="BJMC" length="20" not-null="true" />
+        </property>
+        <property name="class_date" type="java.lang.String">
+            <column name="JBNY" length="15" />
+        </property>
+        <property name="class_remark" type="java.lang.String">
+            <column name="BJSM" length="50" />
+        </property>
+        <many-to-one name="gradeInforMation" class="GradeInformation" fetch="select" lazy="false">
+            <column name="NJBH" length="4" />
+        </many-to-one>
+        <set name="course_id" inverse="true" lazy="false">
+            <key>
+                <column name="BH" length="3" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.exam.Course" />
+        </set>
+        <set name="stu_id" inverse="true" lazy="false">
+            <key>
+                <column name="BH" length="3" not-null="true" />
+            </key>
+            <one-to-many class="StudentInformation" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity">
+    <class name="DepartmentInformation" table="T_B_JG">
+        <id name="department_id" type="java.lang.Integer">
+            <column name="JGBH" length="3" />
+            <generator class="native" />
+        </id>
+        <property name="department_name" type="java.lang.String">
+            <column name="JGMC" length="60" not-null="true" />
+        </property>
+        <property name="department_remark" type="java.lang.String">
+            <column name="JGSM" length="100" />
+        </property>
+        <set name="stu_id" inverse="true" lazy="false">
+            <key>
+                <column name="JGBH" length="3" not-null="true" />
+            </key>
+            <one-to-many class="StudentInformation" />
+        </set>
+        <set name="tea_id" inverse="true" lazy="false">
+            <key>
+                <column name="JGBH" length="3" not-null="true" />
+            </key>
+            <one-to-many class="TeacherInformation" />
+        </set>
+        <set name="course_id" inverse="true" lazy="false">
+            <key>
+                <column name="JGBH" length="3" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.exam.Course" />
+        </set>
+        <set name="profession_id" inverse="true" lazy="false">
+            <key>
+                <column name="JGBH" length="3" not-null="true" />
+            </key>
+            <one-to-many class="ProfessionInformation" />
+        </set>
+    </class>
+</hibernate-mapping>

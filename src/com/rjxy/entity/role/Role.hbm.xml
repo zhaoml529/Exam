@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.role">
+    <class name="Role" table="T_R_JS">
+        <id name="role_id" type="java.lang.Integer">
+            <column name="JSBH" length="3" />
+            <generator class="native" />
+        </id>
+        <property name="role_name" type="java.lang.String">
+            <column name="JSMC" length="15" not-null="true" />
+        </property>
+        <property name="role_remark" type="java.lang.String">
+            <column name="JSSM" length="100" />
+        </property>
+        <set name="teaRole_id" inverse="true">
+            <key>
+                <column name="JSBH" length="3" not-null="true"/>
+            </key>
+            <one-to-many class="TeaRole" />
+        </set>
+        <set name="stu_id" inverse="true">
+            <key>
+                <column name="JSBH" length="3" not-null="true" />
+            </key>
+            <one-to-many class="com.rjxy.entity.StudentInformation" />
+        </set>
+        <set name="RAM_id" inverse="true" cascade="delete">
+            <key>
+                <column name="JSBH" length="3" not-null="true" />
+            </key>
+            <one-to-many class="GroupRAM" />
+        </set>
+    </class>
+</hibernate-mapping>

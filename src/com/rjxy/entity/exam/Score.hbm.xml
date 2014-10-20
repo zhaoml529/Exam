@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.exam">
+    <class name="Score" table="T_E_KSCJ">
+        <id name="score_id" type="java.lang.Integer">
+            <column name="CJBH" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="studentInformation" class="com.rjxy.entity.StudentInformation" fetch="select" lazy="false">
+            <column name="XSXH" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="examTask" class="ExamTask" fetch="select" lazy="false">
+            <column name="RWBH" length="16" not-null="true" />
+        </many-to-one>
+        <property name="choiceScore" type="java.lang.Float">
+            <column name="XZCJ" precision="3" scale="1" />
+        </property>
+		<property name="clozeScore" type="java.lang.Float">
+            <column name="TKCJ" precision="3" scale="1" />
+        </property>
+		<property name="shortAnswerScore" type="java.lang.Float">
+            <column name="JDCJ" precision="3" scale="1" />
+        </property>
+		<property name="comprehensiveScore" type="java.lang.Float">
+            <column name="ZHCJ" precision="3" scale="1" />
+        </property>
+		<property name="totalScore" type="java.lang.Float">
+            <column name="ZCJ" precision="3" scale="1" />
+        </property>
+        <property name="isPass" type="java.lang.Integer">
+            <column name="TG" length="2" not-null="true"/>
+        </property>
+       	<property name="judge" type="java.lang.Integer">
+            <column name="BZW" length="2" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.rjxy.entity.exam">
+	<class name="QuestionType" table="T_T_STLX">
+        <id name="type_id" type="java.lang.Integer">
+            <column name="LXBH" length="2"/>
+            <generator class="native" />
+        </id>
+        <property name="type_name" type="java.lang.String">
+            <column name="LXMC" length="20" not-null="true" />
+        </property>
+        <property name="type_remark" type="java.lang.String">
+            <column name="LXSM" length="100" />
+        </property>
+        <set name="manual_id" inverse="true" lazy="false">
+            <key>
+                <column name="LXBH" length="2" not-null="true" />
+            </key>
+            <one-to-many class="ManualExtract" />
+        </set>
+        <set name="auto_id" inverse="true" lazy="false">
+            <key>
+                <column name="LXBH" length="2" not-null="true" />
+            </key>
+            <one-to-many class="AutomaticExtract" />
+        </set>
+    </class>
+</hibernate-mapping>
