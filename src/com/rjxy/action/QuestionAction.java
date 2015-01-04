@@ -318,7 +318,7 @@ public class QuestionAction {
 		modelMap.addAttribute("choice", choiceCount);
 		modelMap.addAttribute("cloze", clozeCount);
 		modelMap.addAttribute("compre", compCount);
-		modelMap.addAttribute("short", shortCount);
+		modelMap.addAttribute("shortCount", shortCount);
 		return "QuestionManager/hightchartsModel";
 	}
 	

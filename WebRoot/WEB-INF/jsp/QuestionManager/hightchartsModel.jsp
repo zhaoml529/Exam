@@ -17,12 +17,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link type="text/css" rel="stylesheet" href="css/default.css" />
+	<link type="text/css" rel="stylesheet" href="<c:url value="/css/default.css"/>" />
 	<script type="text/javascript" src="<c:url value="/js/jquery-1.10.2.min.js"/>" charset="UTF-8"></script>
-	<script type="text/javascript" src="js/highcharts.js"></script>
-	<script type="text/javascript" src="js/exporting.js"></script>
+	<script type="text/javascript" src="<c:url value="/js/highcharts.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/js/exporting.js"/>"></script>
 	<script type="text/javascript">
 		$(function () {
+			var choice = "${choice}",
+				cloze = "${cloze}",
+				shortCount = "${shortCount}",
+				compre = "${compre}";
 		    $('#container').highcharts({
 		        chart: {
 		            plotBackgroundColor: null,
@@ -54,13 +58,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            data: [
 		            	{
 		                    name: '选择题',
-		                    y: ${choice},
+		                    y: parseInt(choice),
 		                    sliced: true,
 		                    selected: true
 		                },
-		                ['填空题',       ${cloze}],
-		                ['简答题',   ${short}],
-		                ['综合题',    ${compre}]
+		                ['填空题',parseInt(cloze)],
+		                ['简答题',parseInt(shortCount)],
+		                ['综合题',parseInt(compre)]
 		            ]
 		        }]
 		    });

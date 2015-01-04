@@ -805,7 +805,7 @@ public class ExamAction {
 		modelMap.addAttribute("choice", choiceCount);
 		modelMap.addAttribute("cloze", clozeCount);
 		modelMap.addAttribute("compre", compCount);
-		modelMap.addAttribute("short", shortCount);
+		modelMap.addAttribute("shortCount", shortCount);
 		modelMap.addAttribute("easyChoice", easyChoice);
 		modelMap.addAttribute("normalChoice", normalChoice);
 		modelMap.addAttribute("hardChoice", hardChoice);

@@ -23,6 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/exporting.js"></script>
 	<script type="text/javascript">
 		$(function () {
+			var choice = "${choice}",
+			cloze = "${cloze}",
+			shortCount = "${shortCount}",
+			compre = "${compre}";
 		    $('#container').highcharts({
 		        chart: {
 		            plotBackgroundColor: null,
@@ -54,13 +58,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            data: [
 		            	{
 		                    name: '选择题',
-		                    y: ${choice},
+		                    y: parseInt(choice),
 		                    sliced: true,
 		                    selected: true
 		                },
-		                ['填空题',   ${cloze}],
-		                ['简答题',   ${short}],
-		                ['综合题',   ${compre}]
+		                ['填空题',parseInt(cloze)],
+		                ['简答题',parseInt(shortCount)],
+		                ['综合题',parseInt(compre)]
 		            ]
 		        }]
 		    });
@@ -68,43 +72,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
 	<script type="text/javascript">
 	$(function () {
+		var choice = "${choice}",
+		cloze = "${cloze}",
+		shortCount = "${shortCount}",
+		compre = "${compre}";
+		
+		var easyChoice = "${easyChoice}",
+		normalChoice = "${normalChoice}",
+		hardChoice = "${hardChoice}";
+		
+		var easyCloze = "${easyCloze}",
+		normalCloze = "${normalCloze}",
+		hardCloze = "${hardCloze}";
+		
+		var easyShort = "${easyShort}",
+		normalShort = "${normalShort}",
+		hardShort = "${hardShort}";
+		
+		var easyCompre = "${easyCompre}",
+		normalCompre = "${normalCompre}",
+		hardCompre = "${hardCompre}";
         var colors = Highcharts.getOptions().colors,
             categories = ['选择题', '填空题', '简答题', '综合题'],
             name = 'Browser brands',
             data = [{
-                    y: ${choice},
+                    y: parseInt(choice),
                     color: colors[0],
                     drilldown: {
                         name: 'MSIE versions',
                         categories: ['简单', '中等', '困难'],
-                        data: [${easyChoice}, ${normalChoice}, ${hardChoice}],
+                        data: [parseInt(easyChoice), parseInt(normalChoice), parseInt(hardChoice)],
                         color: colors[0]
                     }
                 }, {
-                    y: ${cloze},
+                    y: parseInt(cloze),
                     color: colors[1],
                     drilldown: {
                         name: 'Firefox versions',
                         categories: ['简单', '中等', '困难'],
-                        data: [${easyCloze}, ${normalCloze}, ${hardCloze}],
+                        data: [parseInt(easyCloze), parseInt(normalCloze), parseInt(hardCloze)],
                         color: colors[1]
                     }
                 }, {
-                    y: ${short},
+                    y: parseInt(shortCount),
                     color: colors[2],
                     drilldown: {
                         name: 'Chrome versions',
                         categories: ['简单', '中等', '困难'],
-                        data: [${easyShort}, ${normalShort}, ${hardShort}],
+                        data: [parseInt(easyShort), parseInt(normalShort), parseInt(hardShort)],
                         color: colors[2]
                     }
                 }, {
-                    y: ${compre},
+                    y: parseInt(compre),
                     color: colors[3],
                     drilldown: {
                         name: 'Safari versions',
                         categories: ['简单', '中等', '困难'],
-                        data: [${easyCompre}, ${normalCompre}, ${hardCompre}],
+                        data: [parseInt(easyCompre), parseInt(normalCompre), parseInt(hardCompre)],
                         color: colors[3]
                     }
                 }];
