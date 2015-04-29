@@ -87,7 +87,7 @@ table.pages td {
 border=0></TD></TR>
  </TBODY>
  </TABLE>
-		<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0 height="462">
+		<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0 height="95%">
 			<TBODY>
 				<TR>
 					<TD width=15 background=YHChannelApply.files/new_022.jpg>
