@@ -38,7 +38,7 @@ a:hover, a:active {
 
 /* ±í¸ñ */
 table.default {
-	border:1px solid #0283c5;
+	border:2px solid #dfdfdf;
 	border-collapse:collapse;
 }
 table.default td, table.default tr.style1 td {
