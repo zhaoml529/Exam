@@ -39,7 +39,7 @@
             <column name="CSRQ" length="15" />
         </property>
         <property name="stu_address" type="java.lang.String">
-            <column name="JG" length="80" />
+            <column name="JTZZ" length="80" />
         </property>
         <property name="stu_polity" type="java.lang.String">
             <column name="ZZMM" length="10" />
