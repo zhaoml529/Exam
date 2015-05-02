@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <tr>
 	        <td height=2></td></tr>
 	  </table>
-	  <input type="button" class="btn" value="添加功能" onclick="window.location.href='<c:url value='/right/addRole'/>'"/>
+	  <input type="button" class="btn" value="添加角色" onclick="window.location.href='<c:url value='/right/addRole'/>'"/>
 	  <table align="center" class="default" width="600px">
 			<tr class="title">
 				<td align="center">功能编号</td>
