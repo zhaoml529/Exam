@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<form action="<c:url value='/usermanager/saveStudent' />" method="post" onsubmit="return validateForm(this)">
 		<table align="center" class="default">
 			<tr class="title">
-				<td colspan="2">修改学生信息</td>
+				<td colspan="2">添加学生信息</td>
 			</tr>
 			<tr>
 				<td>学生编号</td>
