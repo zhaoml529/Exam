@@ -79,8 +79,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	<td><span class="note"> * </span>组卷方式</td>
 	 	<td>
 	 	<input type="hidden" validatorType="radio" fieldName="exam_way" errorInfo="请选择抽题方式">
-	 	<input type="radio" name="exam_way" id="1" value="1">自动添加试题
-	 	<input type="radio" name="exam_way" id="0" value="0">手动添加试题
+	 	<input type="radio" name="exam_way" id="1" value="1">自动组卷
+	 	<input type="radio" name="exam_way" id="0" value="0">手动组卷
 	 	</td>
 	 	</tr>
 	 	<tr>
