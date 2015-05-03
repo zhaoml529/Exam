@@ -219,7 +219,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td width="900" style="text-align: left;">${i.count }.<c:out value="${comprehensiveList.question_title }"/></td>
 				   </tr>
 				   <tr>
-				   		<td><c:out value="${comprehensiveList.question_body }"/></td>
+				   		<td><c:out value="${comprehensiveList.question_body }" escapeXml="false"/></td>
 				   </tr>
 				   <tr>
 				   	<td>
