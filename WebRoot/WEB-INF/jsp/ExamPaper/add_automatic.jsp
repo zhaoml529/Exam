@@ -27,13 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function qtype (){
 			var typeid=$("#type").val();
 			if(typeid == 1){
-				$("#typeCount").empty().append("(题库共 "+${choiceCount}+" 道题)");
+				$("#typeCount").empty().append("(题库共 "+'${choiceCount}'+" 道题)");
 			}else if(typeid == 2){
-				$("#typeCount").empty().append("(题库共 "+${clozeCount}+" 道题)");
+				$("#typeCount").empty().append("(题库共 "+'${clozeCount}'+" 道题)");
 			}else if(typeid == 3){
-				$("#typeCount").empty().append("(题库共 "+${shortCount}+" 道题)");
+				$("#typeCount").empty().append("(题库共 "+'${shortCount}'+" 道题)");
 			}else{
-				$("#typeCount").empty().append("(题库共 "+${compreCount}+" 道题)");
+				$("#typeCount").empty().append("(题库共 "+'${compreCount}'+" 道题)");
 			}
 			
 		}
@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<c:choose>
 			<c:when test="${automaticList == null}">
 				<tr>
-					<td colspan="7" align="center">没有数据</td>
+					<td colspan="6" align="center">没有数据</td>
 				</tr>
 			</c:when>
 			<c:otherwise>

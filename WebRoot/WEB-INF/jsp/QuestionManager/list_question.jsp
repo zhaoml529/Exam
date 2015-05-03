@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -95,34 +96,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form>
 		<c:if test="${QuestionType==1}">
 		<table class="default" align="center" width="100%">
-			<col width="3%" align="center" />
+			<col width="5%" align="center" />
 			<col width="20%" align="center"/>
-			<col width="8%" align="center" />
-			<col width="8%" align="center" />
-			<col width="8%" align="center" />
-			<col width="8%" align="center" />
 			<col width="5%" align="center" />
 			<col width="5%" align="center" />
-			<col width="8%" align="center" />
+			<col width="15%" align="center" />
+			<col width="10%" align="center" />
+			<col width="10%" align="center" />
 			<col width="5%" align="center" />
-			<col width="8%" align="center" />
-			<col width="5%" align="center" />
-			<col width="3%" align="center" />
 			<col width="15%" align="center" />
 				<tr class="title">
 					<td>编号</td>
 					<td>题目</td>
-					<td>选项A</td>
-					<td>选项B</td>
-					<td>选项C</td>
-					<td>选项D</td>
 					<td>正确答案</td>
-					<td>试题难度</td>
+					<td>难度系数</td>
 					<td>科目</td>
 					<td>年级</td>
 					<td>添加时间</td>
 					<td>分值</td>
-					<td>备注</td>
 					<td>操作</td>
 				</tr>
 		<c:choose>
@@ -137,17 +128,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr class="changeColor">
 					<td align="center">${choiceList.question_id }</td>
 					<td align="center">${choiceList.question_body }</td>
-					<td align="center">${choiceList.answer_A }</td>
-					<td align="center">${choiceList.answer_B }</td>
-					<td align="center">${choiceList.answer_C }</td>
-					<td align="center">${choiceList.answer_D }</td>
 					<td align="center">${choiceList.question_answer }</td>
 					<td align="center">${choiceList.difficulty }</td>
 					<td align="center">${choiceList.subject.subject_name }</td>
 					<td align="center">${choiceList.grade.grade_name }</td>
 					<td align="center">${choiceList.add_time }</td>
 					<td align="center">${choiceList.question_score }</td>
-					<td align="center">${choiceList.question_remark }</td>
 					<td align="center">
 					<a href="<c:url value='/question/showQuestion/question_id/${choiceList.question_id}/question_type/1'/>">查看</a>
 					<c:if test="${choiceList.add_person==user_id }">|

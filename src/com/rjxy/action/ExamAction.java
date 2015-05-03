@@ -679,125 +679,129 @@ public class ExamAction {
 		//自动
 		if(exam_way == 1){
 			List<AutomaticExtract> automatic = examService.getAutomaticByExamId(paper_id);
-			for(AutomaticExtract list:automatic){
-				QuestionType q_type = list.getQuestionType();
-				switch(q_type.getType_id()){
-					case 1:{
-						choiceCount += list.getQuestion_num();
-						int difficult = list.getDifficulty();
-						if(difficult == 1){
-							easyChoice+=list.getQuestion_num();
-						}else if(difficult == 2){
-							normalChoice+=list.getQuestion_num();;
-						}else{
-							hardChoice+=list.getQuestion_num();;
+			if(!BeanUtils.isBlank(automatic)){
+				for(AutomaticExtract list:automatic){
+					QuestionType q_type = list.getQuestionType();
+					switch(q_type.getType_id()){
+						case 1:{
+							choiceCount += list.getQuestion_num();
+							int difficult = list.getDifficulty();
+							if(difficult == 1){
+								easyChoice+=list.getQuestion_num();
+							}else if(difficult == 2){
+								normalChoice+=list.getQuestion_num();;
+							}else{
+								hardChoice+=list.getQuestion_num();;
+							}
+							break;
 						}
-						break;
-					}
-					case 2:{
-						clozeCount += list.getQuestion_num();
-						int difficult = list.getDifficulty();
-						if(difficult == 1){
-							easyCloze+=list.getQuestion_num();;
-						}else if(difficult == 2){
-							normalCloze+=list.getQuestion_num();;
-						}else{
-							hardCloze+=list.getQuestion_num();;
+						case 2:{
+							clozeCount += list.getQuestion_num();
+							int difficult = list.getDifficulty();
+							if(difficult == 1){
+								easyCloze+=list.getQuestion_num();;
+							}else if(difficult == 2){
+								normalCloze+=list.getQuestion_num();;
+							}else{
+								hardCloze+=list.getQuestion_num();;
+							}
+							break;
 						}
-						break;
-					}
-					case 3:{
-						shortCount += list.getQuestion_num();
-						int difficult = list.getDifficulty();
-						if(difficult == 1){
-							easyShort+=list.getQuestion_num();;
-						}else if(difficult == 2){
-							normalShort+=list.getQuestion_num();;
-						}else{
-							hardShort+=list.getQuestion_num();;
+						case 3:{
+							shortCount += list.getQuestion_num();
+							int difficult = list.getDifficulty();
+							if(difficult == 1){
+								easyShort+=list.getQuestion_num();;
+							}else if(difficult == 2){
+								normalShort+=list.getQuestion_num();;
+							}else{
+								hardShort+=list.getQuestion_num();;
+							}
+							break;
 						}
-						break;
-					}
-					case 4:{
-						compCount += list.getQuestion_num();
-						int difficult = list.getDifficulty();
-						if(difficult == 1){
-							easyCompre+=list.getQuestion_num();;
-						}else if(difficult == 2){
-							normalCompre+=list.getQuestion_num();;
-						}else{
-							hardCompre+=list.getQuestion_num();;
+						case 4:{
+							compCount += list.getQuestion_num();
+							int difficult = list.getDifficulty();
+							if(difficult == 1){
+								easyCompre+=list.getQuestion_num();;
+							}else if(difficult == 2){
+								normalCompre+=list.getQuestion_num();;
+							}else{
+								hardCompre+=list.getQuestion_num();;
+							}
+							break;
 						}
-						break;
 					}
 				}
 			}
 		}else{
 		//手动
 			List<ManualExtract> manual = examService.getManualExtractById(paper_id);
-			for(ManualExtract list:manual){
-				String questionId[] = list.getQuestion_id().split("-");
-				QuestionType q_type = list.getQuestionType();
-				switch(q_type.getType_id()){
-					case 1:{
-						choiceCount += list.getQuestion_num();
-						for(int j=0;j<questionId.length;j++){
-							Choice choice = exam_ExamineService.getChoiceById(Integer.parseInt(questionId[j]));
-							int difficult = choice.getDifficulty();
-							if(difficult == 1){
-								easyChoice++;
-							}else if(difficult == 2){
-								normalChoice++;
-							}else{
-								hardChoice++;
+			if(!BeanUtils.isBlank(manual)){
+				for(ManualExtract list:manual){
+					String questionId[] = list.getQuestion_id().split("-");
+					QuestionType q_type = list.getQuestionType();
+					switch(q_type.getType_id()){
+						case 1:{
+							choiceCount += list.getQuestion_num();
+							for(int j=0;j<questionId.length;j++){
+								Choice choice = exam_ExamineService.getChoiceById(Integer.parseInt(questionId[j]));
+								int difficult = choice.getDifficulty();
+								if(difficult == 1){
+									easyChoice++;
+								}else if(difficult == 2){
+									normalChoice++;
+								}else{
+									hardChoice++;
+								}
 							}
+							break;
 						}
-						break;
-					}
-					case 2:{
-						clozeCount += list.getQuestion_num();
-						for(int j=0;j<questionId.length;j++){
-							Cloze cloze = exam_ExamineService.getClozeById(Integer.parseInt(questionId[j]));
-							int difficult = cloze.getDifficulty();
-							if(difficult == 1){
-								easyCloze++;
-							}else if(difficult == 2){
-								normalCloze++;
-							}else{
-								hardCloze++;
+						case 2:{
+							clozeCount += list.getQuestion_num();
+							for(int j=0;j<questionId.length;j++){
+								Cloze cloze = exam_ExamineService.getClozeById(Integer.parseInt(questionId[j]));
+								int difficult = cloze.getDifficulty();
+								if(difficult == 1){
+									easyCloze++;
+								}else if(difficult == 2){
+									normalCloze++;
+								}else{
+									hardCloze++;
+								}
 							}
+							break;
 						}
-						break;
-					}
-					case 3:{
-						shortCount += list.getQuestion_num();
-						for(int j=0;j<questionId.length;j++){
-							ShortAnswer shortAnswer = exam_ExamineService.getShortAnswerById(Integer.parseInt(questionId[j]));
-							int difficult = shortAnswer.getDifficulty();
-							if(difficult == 1){
-								easyShort++;
-							}else if(difficult == 2){
-								normalShort++;
-							}else{
-								hardShort++;
+						case 3:{
+							shortCount += list.getQuestion_num();
+							for(int j=0;j<questionId.length;j++){
+								ShortAnswer shortAnswer = exam_ExamineService.getShortAnswerById(Integer.parseInt(questionId[j]));
+								int difficult = shortAnswer.getDifficulty();
+								if(difficult == 1){
+									easyShort++;
+								}else if(difficult == 2){
+									normalShort++;
+								}else{
+									hardShort++;
+								}
 							}
+							break;
 						}
-						break;
-					}
-					case 4:{
-						compCount += list.getQuestion_num();
-						for(int j=0;j<questionId.length;j++){
-							Comprehensive compre = exam_ExamineService.getComperById(Integer.parseInt(questionId[j]));
-							int difficult = compre.getDifficulty();
-							if(difficult == 1){
-								easyCompre++;
-							}else if(difficult == 2){
-								normalCompre++;
-							}else{
-								hardCompre++;
+						case 4:{
+							compCount += list.getQuestion_num();
+							for(int j=0;j<questionId.length;j++){
+								Comprehensive compre = exam_ExamineService.getComperById(Integer.parseInt(questionId[j]));
+								int difficult = compre.getDifficulty();
+								if(difficult == 1){
+									easyCompre++;
+								}else if(difficult == 2){
+									normalCompre++;
+								}else{
+									hardCompre++;
+								}
 							}
+							break;
 						}
-						break;
 					}
 				}
 			}

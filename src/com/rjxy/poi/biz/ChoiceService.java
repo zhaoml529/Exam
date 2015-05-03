@@ -9,7 +9,9 @@ package com.rjxy.poi.biz;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -257,7 +259,9 @@ public class ChoiceService extends BaseService<Choice>{
         	choice.setAdd_person(cellStr);
         	break;
         case 12:
-        	choice.setAdd_time(cellStr);
+        	String addTime = com.rjxy.util.DateUtil.DateToString(new Date(), "yyyy-MM-dd");
+        	choice.setAdd_time(addTime);
+        	break;
         case 13:
         	choice.setQuestion_remark(cellStr);
         	break;
